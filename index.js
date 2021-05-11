@@ -8,6 +8,9 @@
  */
 function trimProperties(obj) {
   // ✨ implement
+  const newObj = obj.name.trim()
+
+  return newObj
 }
 
 /**
