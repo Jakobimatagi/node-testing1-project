@@ -8,9 +8,11 @@
  */
 function trimProperties(obj) {
   // ✨ implement
-  const newObj = Object.keys(obj).map(k => obj[k] = obj[k].trim());
-
-  return newObj
+  if (!Array.isArray(obj) && typeof obj != 'object') return obj;
+  return Object.keys(obj).reduce(function(acc, key) {
+    acc[key.trim()] = typeof obj[key] == 'string'? obj[key].trim() : trimObj(obj[key]);
+    return acc;
+  }, Array.isArray(obj)? []:{});
 }
 
 /**
@@ -23,6 +25,12 @@ function trimProperties(obj) {
  */
 function trimPropertiesMutation(obj) {
   // ✨ implement
+  if (!Array.isArray(obj) && typeof obj != 'object') return obj;
+  return Object.keys(obj).reduce(function(acc, key) {
+    acc[key.trim()] = typeof obj[key] == 'string'? obj[key].trim() : trimPropertiesMutation(obj[key]);
+    return acc;
+  }, Array.isArray(obj)? []:{});
+  
 }
 
 /**
