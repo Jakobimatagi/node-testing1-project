@@ -8,7 +8,7 @@
  */
 function trimProperties(obj) {
   // ✨ implement
-  const newObj = obj.name.trim()
+  const newObj = Object.keys(obj).map(k => obj[k] = obj[k].trim());
 
   return newObj
 }
